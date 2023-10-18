@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Материалы для оценки
+{% endblock %}
+
+{% block name %}
+Материалы для оценки
+{% endblock %}
+
+{% block content %}
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Материалы для тестирования</h6>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile01">Загрузить тестирование</label>
+        <input type="file" class="form-control" id="inputGroupFile01">
+    </div>
+    <div class="d-flex text-muted pt-3">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                Раздел знаний
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Междисциплинарные науки‎ </a></li>
+                <li><a class="dropdown-item" href="#">
+                    Разделы информатики</a></li>
+                <li><a class="dropdown-item" href="#">Разделы географии</a></li>
+                <li><a class="dropdown-item" href="#">Разделы геологии</a></li>
+                <li><a class="dropdown-item" href="#">
+                    Разделы физики</a></li>
+            </ul>
+        </div>
+        <a href="{% url 'materialsForEvaluation' %}" class="btn btn-primary" role="button">Подтвердить</a>
+
+    </div>
+</div>
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Библиотека рекомендаций</h6>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile02">Загрузить учебные материалы</label>
+        <input type="file" class="form-control" id="inputGroupFile02">
+    </div>
+    <div class="d-flex text-muted pt-3">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                Раздел знаний
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Междисциплинарные науки‎ </a></li>
+                <li><a class="dropdown-item" href="#">
+                    Разделы информатики</a></li>
+                <li><a class="dropdown-item" href="#">Разделы географии</a></li>
+                <li><a class="dropdown-item" href="#">Разделы геологии</a></li>
+                <li><a class="dropdown-item" href="#">
+                    Разделы физики</a></li>
+            </ul>
+        </div>
+        <a href="{% url 'materialsForEvaluation' %}" class="btn btn-primary" role="button">Подтвердить</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block activeMaterialsForEvaluatione %}active{% endblock %}

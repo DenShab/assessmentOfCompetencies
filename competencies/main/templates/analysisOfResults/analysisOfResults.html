@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Анализ результатов
+{% endblock %}
+
+{% block name %}
+Анализ результатов
+{% endblock %}
+
+{% block content %}
+<script>
+   $(document).ready(function(){
+
+google.charts.load("current", {packages:["corechart"]});
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+var data = google.visualization.arrayToDataTable([
+['Task', 'Hours per Day'],
+['Соответствуют уровню знаний', 45],
+['Не соответствуют уровню знаний', 44],
+]);
+
+var data2 = google.visualization.arrayToDataTable([
+['Task', 'Hours per Day'],
+['Соответствуют уровню знаний', 70],
+['Не соответствуют уровню знаний', 70],
+]);
+
+var options = {
+title: 'Бригада КРС',
+pieHole: 0.4,
+};
+var options2 = {
+title: 'Бригада ПРС',
+pieHole: 0.4,
+};
+var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+chart.draw(data, options);
+
+var chart2 = new google.visualization.PieChart(document.getElementById('donutchart2'));
+chart2.draw(data2, options2);
+}
+
+});
+
+
+</script>
+
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Анализ результатов</h6>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div class="container d-flex justify-container-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="donutchart" style="width: 900px; height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-flex justify-container-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="donutchart2" style="width: 900px; height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block activeAnalysisOfResults %}active{% endblock %}

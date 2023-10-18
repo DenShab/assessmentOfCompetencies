@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Оценка компетенций
+{% endblock %}
+
+
+{% block content %}
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Профессионально-технические компетенции</h6>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile01">Загрузить матрицу компетенций</label>
+        <input type="file" class="form-control" id="inputGroupFile01">
+    </div>
+    <div class="d-flex text-muted pt-3">
+        <button class="w-100 btn btn-primary" type="submit" name="clean">Назначить оценку</button>
+    </div>
+</div>
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Оценка личностных компетенций</h6>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile02">Загрузить матрицу компетенций</label>
+        <input type="file" class="form-control" id="inputGroupFile02">
+    </div>
+    <div class="d-flex text-muted pt-3">
+        <button class="w-100 btn btn-primary" type="submit" name="clean">Назначить оценку</button>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Новое сообщение</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input id="a" type="radio" name="myname" data-class="js-a"/>Подразделение<br/>
+                        <input class="js-all js-a form-control basicAutoComplete" disabled id="recipient-name"
+                               data-url="structuralDivision_autocomplete/"/><br/>
+                    </div>
+                    <div class="mb-3">
+                        <input id="b" type="radio" name="myname" data-class="js-b"/>Отдел<br/>
+                        <input class="js-all js-b form-control basicAutoComplete" disabled
+                               data-url="department_autocomplete/"/>
+                    </div>
+                    <div class="mb-3">
+                        <input id="c" type="radio" name="myname" data-class="js-c"/>Сотрудник<br/>
+                        <input class="js-all js-c form-control basicAutoComplete" disabled
+                               data-url="employee_autocomplete/"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'assessmentOfCompetencies' %}" class="btn btn-primary" role="button">Закрыть</a>
+
+                <a href="{% url 'assessmentOfCompetencies' %}" class="btn btn-primary" role="button">Подтвердить</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
+<script>
+        $('.basicAutoComplete').autoComplete(
+            {minLength: 1}
+        );
+        $('.dropdown-menu').css({'top': 'auto', 'left': 'auto'})
+
+</script>
+<script type="text/javascript">
+
+
+ $('button[name="clean"]').on('click', function(e) {
+
+  var $form = $(this).closest('form');
+  e.preventDefault();
+  $('#exampleModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    })
+    .one('click', '#delete', function(e) {
+      $form.trigger('submit');
+    });
+    $('#exampleModal').modal('show');
+    console.log("qwe")
+});
+$(function() {
+  $(":radio").on("click", function() {
+    var dataClass = $(this).data("class");
+    $(".js-all").each(function() {
+        this.disabled = !$(this).hasClass(dataClass);
+    });
+  });
+});
+
+
+
+
+
+</script>
+
+{% endblock %}
+
+{% block activeAssessmentOfCompetencies %}active{% endblock %}
